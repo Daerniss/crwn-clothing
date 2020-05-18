@@ -17,7 +17,6 @@ const MenuItem = ({
       className={classnames('menu-item', {
         [size]: size,
       })}
-      // onClick={() => history.push(`${match.url}${linkUrl}`)}
       to={linkUrl}
     >
       <div
