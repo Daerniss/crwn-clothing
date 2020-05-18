@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 
 import './Directory.scss';
 
-import MenuItem from '../MenuItem';
+import MenuItem from 'components/shared/MenuItem';
 
 const Directory = () => {
-  const [sections, setSections] = useState([
+  const [sections] = useState([
     {
       title: 'hats',
       imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',

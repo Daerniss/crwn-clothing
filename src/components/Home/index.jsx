@@ -2,7 +2,7 @@ import React from 'react';
 
 import './Home.scss';
 
-import Directory from '../shared/Directory';
+import Directory from 'components/shared/Directory';
 
 const Home = () => {
   return (
