@@ -23,9 +23,16 @@ const Header = () => {
         <NavLink
           className='nav__item'
           to={routes.shop.route}
-          exact
+          // exact
         >
           Shop
+        </NavLink>
+        <NavLink
+          className='nav__item'
+          to={routes.auth.route}
+          exact
+        >
+          SignIn
         </NavLink>
       </nav>
     </header>

@@ -4,6 +4,9 @@ const routes = {
   },
   shop: {
     route: '/shop'
+  },
+  auth: {
+    route: '/signin'
   }
 };
 

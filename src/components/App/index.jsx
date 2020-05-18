@@ -7,6 +7,7 @@ import './App.scss';
 import Header from 'components/shared/Header';
 import Home from 'components/Home';
 import Shop from 'components/Shop';
+import Auth from 'components/Auth';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Switch>
         <Route exact path={routes.home.route} component={Home} />
         <Route exact path={routes.shop.route} component={Shop} />
+        <Route exact path={routes.auth.route} component={Auth} />
       </Switch>
     </div>
   );
