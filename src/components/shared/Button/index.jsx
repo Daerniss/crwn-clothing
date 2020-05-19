@@ -1,10 +1,15 @@
 import React from 'react';
+import cx from 'classnames';
 
 import './Button.scss';
 
-const Button = ({ children, ...props }) => {
+const Button = ({ children, isGoogleSignIn, ...props }) => {
   return (
-    <button className='button' {...props}>
+    <button
+    className={cx('button', {
+      'google-sign-in': isGoogleSignIn,
+    })}
+     {...props}>
       {children}
     </button>
   )

@@ -5,6 +5,8 @@ import './SignIn.scss';
 import FormInput from 'components/shared/FormInput';
 import Button from 'components/shared/Button';
 
+import { signInWithGoogle } from 'firebase/firebase.utils';
+
 const SignIn = () => {
   const [formData, setFormData] = useState({});
 
@@ -41,7 +43,10 @@ const SignIn = () => {
           handleChange={handleChange}
           required
         />
-        <Button type="submit">Sign In</Button>
+        <div className='buttons'>
+          <Button type="submit">Sign In</Button>
+          <Button isGoogleSignIn onClick={signInWithGoogle}>Sign In with Google</Button>
+        </div>
       </form>
     </div>
   );

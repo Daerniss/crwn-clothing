@@ -5,12 +5,6 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 25px;
-
-  // &__logo-container {
-  //   height: 100%;
-  //   width: 70px;
-  //   padding: 25px;
-  // }
 }
 
 .nav {
@@ -22,6 +16,7 @@
 
   &__item {
     padding: 10px 0;
+    cursor: pointer;
 
     &:not(:last-child) {
       margin-right: 15px;
