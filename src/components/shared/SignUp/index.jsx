@@ -20,7 +20,9 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { displayName, email, password, confirmPassword } = formData;
+    const {
+      displayName, email, password, confirmPassword,
+    } = formData;
 
     if (password !== confirmPassword) {
       alert('passwords don\'t match');
@@ -36,14 +38,14 @@ const SignUp = () => {
     } catch (error) {
       console.error(error.message);
     }
-  }
+  };
 
   return (
-    <div className='sign-up'>
-      <h2 className='title'>I do now have an account</h2>
+    <div className="sign-up">
+      <h2 className="title">I do now have an account</h2>
       <span>Sign up with your email and password</span>
 
-      <form className='sign-up__form' onSubmit={handleSubmit}>
+      <form className="sign-up__form" onSubmit={handleSubmit}>
         <FormInput
           type="text"
           name="displayName"
@@ -76,10 +78,10 @@ const SignUp = () => {
           handleChange={handleChange}
           required
         />
-        <Button type='submit'>Sign Up</Button>
+        <Button type="submit">Sign Up</Button>
       </form>
     </div>
   );
-}
+};
 
 export default SignUp;

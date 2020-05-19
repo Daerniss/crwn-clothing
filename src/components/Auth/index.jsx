@@ -5,13 +5,11 @@ import SignUp from 'components/shared/SignUp';
 
 import './Auth.scss';
 
-const Auth = () => {
-  return(
-    <div className='auth'>
-      <SignIn />
-      <SignUp />
-    </div>
-  );
-}
+const Auth = () => (
+  <div className="auth">
+    <SignIn />
+    <SignUp />
+  </div>
+);
 
 export default Auth;

@@ -1,0 +1,43 @@
+{
+  "parser": "babel-eslint",
+  "extends": ["airbnb"],
+  "plugins": ["jsx-a11y", "import", "react"],
+  "env": {
+    "node": true,
+    "es6": true,
+    "browser": true
+  },
+  "parserOptions": { "ecmaVersion": 6 },
+  "rules": {
+    "linebreak-style": 0,
+    "global-require": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "jsx-a11y/label-has-for": "off",
+    "react/jsx-props-no-spreading": "off",
+    "jsx-a11y/anchor-is-valid": [
+      "error", {
+        "components": [ "Link" ],
+        "specialLink": [ "hrefLeft", "hrefRight" ],
+        "aspects": [ "invalidHref", "preferButton" ]
+      }
+    ],
+    "comma-dangle": ["error", {
+        "arrays": "always-multiline",
+        "objects": "always-multiline",
+        "imports": "always-multiline",
+        "exports": "always-multiline",
+        "functions": "ignore"
+    }],
+    "quote-props": ["error", "consistent"],
+    "ter-arrow-parens": "off",
+    "object-shorthand-properties-first": "off",
+    "no-param-reassign": [2, { "props": false }],
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "off",
+    "no-unused-expressions": [
+        "error",
+        {  "allowShortCircuit": true }
+    ],
+    "react/destructuring-assignment": ["off", "always"]
+  }
+}

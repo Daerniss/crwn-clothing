@@ -14,10 +14,10 @@ import './App.scss';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    let unsubcribeFromAuth = null;
-    unsubcribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+    auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -26,25 +26,28 @@ function App() {
             id: snapshop.id,
             ...snapshop.data(),
           });
-        })
+        });
       } else {
         setCurrentUser(userAuth);
       }
+      setIsLoading(false);
     });
-
-    return () => {
-      unsubcribeFromAuth();
-    }
   }, []);
 
   return (
     <div>
-      <Header currentUser={currentUser} />
-      <Switch>
-        <Route exact path={routes.home.route} component={Home} />
-        <Route exact path={routes.shop.route} component={Shop} />
-        <Route exact path={routes.auth.route} component={Auth} />
-      </Switch>
+      {isLoading
+        ? <span>Loading...</span>
+        : (
+          <>
+            <Header currentUser={currentUser} />
+            <Switch>
+              <Route exact path={routes.home.route} component={Home} />
+              <Route exact path={routes.shop.route} component={Shop} />
+              <Route exact path={routes.auth.route} component={Auth} />
+            </Switch>
+          </>
+        )}
     </div>
   );
 }
