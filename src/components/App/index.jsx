@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import { auth, createUserProfileDocument } from 'firebase/firebase.utils';
 
@@ -10,46 +12,48 @@ import Home from 'components/Home';
 import Shop from 'components/Shop';
 import Auth from 'components/Auth';
 
+import { setCurrentUser } from 'redux/user/user.actions';
+
 import './App.scss';
 
-function App() {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
+function App({ setCurrentUserF }) {
   useEffect(() => {
     auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
         userRef.onSnapshot((snapshop) => {
-          setCurrentUser({
+          setCurrentUserF({
             id: snapshop.id,
             ...snapshop.data(),
           });
         });
-      } else {
-        setCurrentUser(userAuth);
       }
-      setIsLoading(false);
+
+      setCurrentUserF(userAuth);
     });
   }, []);
 
   return (
     <div>
-      {isLoading
-        ? <span>Loading...</span>
-        : (
-          <>
-            <Header currentUser={currentUser} />
-            <Switch>
-              <Route exact path={routes.home.route} component={Home} />
-              <Route exact path={routes.shop.route} component={Shop} />
-              <Route exact path={routes.auth.route} component={Auth} />
-            </Switch>
-          </>
-        )}
+      <>
+        <Header />
+        <Switch>
+          <Route exact path={routes.home.route} component={Home} />
+          <Route exact path={routes.shop.route} component={Shop} />
+          <Route exact path={routes.auth.route} component={Auth} />
+        </Switch>
+      </>
     </div>
   );
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  setCurrentUserF: (user) => dispatch(setCurrentUser(user)),
+});
+
+App.propTypes = {
+  setCurrentUserF: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(App);
