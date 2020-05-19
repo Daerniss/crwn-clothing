@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-import './SignIn.scss';
+import { signInWithGoogle } from 'firebase/firebase.utils';
 
 import FormInput from 'components/shared/FormInput';
 import Button from 'components/shared/Button';
 
-import { signInWithGoogle } from 'firebase/firebase.utils';
+import './SignIn.scss';
 
 const SignIn = () => {
   const [formData, setFormData] = useState({});
@@ -28,18 +28,18 @@ const SignIn = () => {
 
       <form onSubmit={handleSubmit}>
         <FormInput
+          type="email"
           name="email"
           value={formData.email}
-          type="email"
-          label="email"
+          label="Email"
           handleChange={handleChange}
           required
         />
         <FormInput 
+          type="password"
           name="password"
           value={formData.password}
-          type="password"
-          label="password"
+          label="Password"
           handleChange={handleChange}
           required
         />

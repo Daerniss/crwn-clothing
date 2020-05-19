@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { auth } from 'firebase/firebase.utils';
-
-import './App.scss';
+import { auth, createUserProfileDocument } from 'firebase/firebase.utils';
 
 import routes from 'constants/routes';
 
@@ -12,21 +10,33 @@ import Home from 'components/Home';
 import Shop from 'components/Shop';
 import Auth from 'components/Auth';
 
+import './App.scss';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     let unsubcribeFromAuth = null;
-    unsubcribeFromAuth = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
+    unsubcribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+
+        userRef.onSnapshot((snapshop) => {
+          setCurrentUser({
+            id: snapshop.id,
+            ...snapshop.data(),
+          });
+        })
+      } else {
+        setCurrentUser(userAuth);
+      }
     });
 
     return () => {
       unsubcribeFromAuth();
     }
   }, []);
-  console.log(currentUser);
+
   return (
     <div>
       <Header currentUser={currentUser} />

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './Home.scss';
-
 import Directory from 'components/shared/Directory';
+
+import './Home.scss';
 
 const Home = () => {
   return (

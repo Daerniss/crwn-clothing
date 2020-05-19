@@ -1,14 +1,16 @@
 import React from 'react';
 
-import './Auth.scss';
-
 import SignIn from 'components/shared/SignIn';
+import SignUp from 'components/shared/SignUp';
+
+import './Auth.scss';
 
 const Auth = () => {
   return(
-    <>
+    <div className='auth'>
       <SignIn />
-    </>
+      <SignUp />
+    </div>
   );
 }
 

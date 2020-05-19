@@ -3,11 +3,11 @@ import { Link, NavLink } from 'react-router-dom';
 
 import { auth } from 'firebase/firebase.utils';
 
-import './Header.scss';
-
 import { ReactComponent as Logo } from 'assets/images/icons/logo.svg';
 
 import routes from 'constants/routes';
+
+import './Header.scss';
 
 const Header = ({ currentUser }) => {
   return(
@@ -26,7 +26,6 @@ const Header = ({ currentUser }) => {
         <NavLink
           className='nav__item'
           to={routes.shop.route}
-          // exact
         >
           Shop
         </NavLink>

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './CollectionPreview.scss';
-
 import CollectionItem from 'components/shared/CollectionItem';
+
+import './CollectionPreview.scss';
 
 const CollectionPreview = ({ title, items }) => {
   return(
