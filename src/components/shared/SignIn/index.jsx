@@ -19,6 +19,7 @@ const SignIn = () => {
       await auth.signInWithEmailAndPassword(email, password);
       setFormData({});
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error.message);
     }
   };

@@ -25,6 +25,7 @@ const SignUp = () => {
     } = formData;
 
     if (password !== confirmPassword) {
+      // eslint-disable-next-line no-alert
       alert('passwords don\'t match');
       return;
     }
@@ -35,8 +36,9 @@ const SignUp = () => {
       await createUserProfileDocument(user, { displayName });
 
       setFormData({});
-    } catch (error) {
-      console.error(error.message);
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error(err.message);
     }
   };
 

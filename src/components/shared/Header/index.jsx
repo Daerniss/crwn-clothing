@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 
@@ -7,6 +8,9 @@ import { auth } from 'firebase/firebase.utils';
 import { ReactComponent as Logo } from 'assets/images/icons/logo.svg';
 
 import routes from 'constants/routes';
+
+import CartIcon from 'components/shared/CartIcon';
+import CartDropdown from 'components/shared/CartDropdown';
 
 import './Header.scss';
 
@@ -29,8 +33,6 @@ const Header = ({ currentUser }) => (
       >
         Shop
       </NavLink>
-
-
       {currentUser
         ? (
           <button
@@ -50,9 +52,19 @@ const Header = ({ currentUser }) => (
             Sign In
           </NavLink>
         )}
+      <CartIcon />
     </nav>
+    <CartDropdown />
   </header>
 );
+
+Header.defaultProps = {
+  currentUser: null,
+};
+
+Header.propTypes = {
+  currentUser: PropTypes.shape({}),
+};
 
 const mapStateToProps = (state) => ({
   currentUser: state.user.currentUser,

@@ -28,11 +28,11 @@ function App({ currentUser, setCurrentUserF }) {
             ...snapshop.data(),
           });
         });
+      } else {
+        setCurrentUserF(userAuth);
       }
-
-      setCurrentUserF(userAuth);
     });
-  }, []);
+  }, [setCurrentUserF]);
 
   return (
     <div>
@@ -62,8 +62,13 @@ const mapDispatchToProps = (dispatch) => ({
   setCurrentUserF: (user) => dispatch(setCurrentUser(user)),
 });
 
+App.defaultProps = {
+  currentUser: null,
+};
+
 App.propTypes = {
   setCurrentUserF: PropTypes.func.isRequired,
+  currentUser: PropTypes.shape({}),
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
