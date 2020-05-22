@@ -3,11 +3,11 @@ const routes = {
     route: '/',
   },
   shop: {
-    route: '/shop'
+    route: '/shop',
   },
   auth: {
-    route: '/signin'
-  }
+    route: '/signin',
+  },
 };
 
 export default routes;
