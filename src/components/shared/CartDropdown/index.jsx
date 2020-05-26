@@ -8,6 +8,8 @@ import './CartDropdown.scss';
 import Button from 'components/shared/Button';
 import CartItem from '../CartItem';
 
+import { selectCartItems } from 'redux/cart/cart.selectors';
+
 const CartDropdown = ({ visible, cartItems }) => (
   <div className={cx('cart-dropdown', {
     'visible': visible,
@@ -22,9 +24,9 @@ const CartDropdown = ({ visible, cartItems }) => (
   </div>
 );
 
-const mapStateToProps = ({ cart }) => ({
-  visible: cart.visible,
-  cartItems: cart.cartItems,
+const mapStateToProps = (state) => ({
+  visible: state.cart.visible,
+  cartItems: selectCartItems(state),
 });
 
 CartDropdown.propTypes = {
